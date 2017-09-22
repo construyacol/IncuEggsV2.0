@@ -1,0 +1,20 @@
+{
+  "name": "incueggs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "serialport": "^5.0.0",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
+  },
+  "description": ""
+}

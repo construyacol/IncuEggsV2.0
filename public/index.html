@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" class=" fondo" >
+	<head>
+	<title>IncuEggs</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/menu.css" />
+
+    	<script src="socket.io/socket.io.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/function.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
+
+<!-- jQuery is required -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- UIkit JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script> -->
+	</head>
+	<body>
+	<script >
+var socket= io();
+		
+	</script>
+    <input type="text" name="" id="dato" value="1" style="display: none;">  
+
+	<style>
+		
+		#contenedoOficial{
+			width: 100% !important;
+			height: 100% !important;
+			padding: 20px 80px 20px 80px;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			z-index: 3;
+		}
+		.contenedorGlobal{
+				width: 100%;
+				/*width: 100px;*/
+				height: 580px;
+				/*height: 100%;*/
+				position: relative;
+				display: flex;
+				justify-content: center;
+				z-index: 1;
+		}
+
+		.fondo{
+				background: rgba(72,85,99,1);
+		background: -moz-linear-gradient(left, rgba(72,85,99,1) 0%, rgba(41,50,60,1) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,85,99,1)), color-stop(100%, rgba(41,50,60,1)));
+		background: -webkit-linear-gradient(left, rgba(72,85,99,1) 0%, rgba(41,50,60,1) 100%);
+		background: -o-linear-gradient(left, rgba(72,85,99,1) 0%, rgba(41,50,60,1) 100%);
+		background: -ms-linear-gradient(left, rgba(72,85,99,1) 0%, rgba(41,50,60,1) 100%);
+		background: linear-gradient(to right, rgba(72,85,99,1) 0%, rgba(41,50,60,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#485563', endColorstr='#29323c', GradientType=1 );
+		}
+
+		#gn-menu{
+			position: absolute;	
+			z-index: 10;
+		}
+
+		#contsec{
+			width: 100%;
+			height: 75%;
+			/*background: black;*/
+			display: flex;
+		}
+		.seccion1{
+			height: 100%-14px;
+			/*width: 100px;*/
+			margin: 4px;
+		}
+		.columna{
+			display: flex;
+			flex-direction: column;
+		}
+		.ancho1{
+			width: 25%;
+		}
+		.ancho3{
+			width: 35%;
+		}
+		.ancho2{
+			width: 40%;
+
+		}
+		.ancho4{
+			width: 50%;
+		}
+		#contsec2{
+			height: 25%;
+			width: 100%-14px;
+			display: flex;
+			/*margin: 7px;*/
+		}
+		#seccion4, #seccion5, #seccion6{
+			height: 100%-14px;
+				background: rgba(0, 0, 0, 0.49);
+			margin: 4px;
+		}
+		.anchotodo{
+			width: 100%-30px;
+		}
+		#detalleIncu{
+			height: 40%;
+		}
+		#servo{
+			height: 30%;
+			align-items: center;
+			/*justify-content: center !important;*/
+		}
+		#gadgets{
+			height: 30%;
+		}
+		.margenH{
+			margin-bottom: 8px;
+		}
+		.margencita{
+			margin: 0 5px;
+		}
+		.negro{
+			background: rgba(0, 0, 0, 0.49);
+			justify-content: space-around;
+		}
+		#HumTemp{
+			height: 10%;
+		}
+		.margenH2{
+			margin-bottom: 12px;
+		}
+		#porcentaje{
+			height: 90%;
+		}
+		#chart{
+			height: 90%;
+
+		}
+		#calendario{
+			height: 10%;
+		}
+		#imgservo{
+				margin-bottom: 10px;
+			margin-top: 10px;
+
+		}
+		.texto{
+			margin: 10px ;
+			text-align: center;		
+			color: #55F3C6;
+			font-weight: normal;
+			font-size: 14px;
+		}
+		.texto2{
+			margin: 10px ;
+			text-align: center;		
+			color: #A3D900;
+			font-weight: normal;
+			font-size: 14px;
+		}
+
+		.subti{
+			margin-top: 10px !important;
+			margin-bottom: 15px !important;
+			font-size: 20px !important;
+			color: #A3D900 !important;
+
+		}
+		.fila{
+			display: flex;
+		}
+		.centrarH{
+			display: flex;
+			justify-content: center;
+		}
+		.centrarV{
+			display: flex;
+			align-items: center;
+		}
+		#gradoServo{
+
+			font-size: 35px !important;
+			margin: 0 !important;
+		}
+		.altomitad{
+			height: 50%;
+		}
+		.anchomitad{
+
+			width: 50%;
+		}
+		.spaceAround{
+			display: flex;
+			justify-content: space-around;
+		}
+		.spaceBetween{
+			display: flex;
+			justify-content: space-between;
+			margin: 0 15px;
+
+		}
+		.texto3{
+			font-size: 10px !important;
+		}
+		#action{
+			transition: .3s;
+			background: #A3D900;
+			width: 80px;
+			height: 80px;
+			-webkit-clip-path: polygon(0% 0%, 100% 48%, 100% 48%, 0% 100%);
+			clip-path: polygon(0% 0%, 100% 48%, 100% 48%, 0% 100%);
+		}
+		.cursor{
+			cursor: pointer;
+		}
+		.altodo{
+			height: 100%;
+		}
+		.margen0{
+			margin: 0 !important; 
+		}
+
+
+	#mapa{
+		position: absolute;
+		z-index: 2;
+		opacity: 0.05;
+		width: 100%;
+		height: 100%;
+		background-image: url('assets/mapa2.png');
+		background-size: cover;
+		background-position: center;
+	}
+	</style>
+		<div class="contenedorGlobal">
+		<div id="mapa"></div>
+			<ul id="gn-menu" class="gn-menu-main menu">
+				<li class="gn-trigger">
+					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+					<nav class="gn-menu-wrapper">
+						<div class="gn-scroller">
+							<ul class="gn-menu">
+								<li class="gn-search-item">
+									<input placeholder="Search" type="search" class="gn-search">
+									<a class="gn-icon gn-icon-search"><span>Search</span></a>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Downloads</a>
+									<ul class="gn-submenu">
+										<li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
+										<li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
+									</ul>
+								</li>
+								<li><a class="gn-icon gn-icon-cog">Settings</a></li>
+								<li><a class="gn-icon gn-icon-help">Help</a></li>
+								<li>
+									<a class="gn-icon gn-icon-archive">Archives</a>
+									<ul class="gn-submenu">
+										<li><a class="gn-icon gn-icon-article">Articles</a></li>
+										<li><a class="gn-icon gn-icon-pictures">Images</a></li>
+										<li><a class="gn-icon gn-icon-videos">Videos</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /gn-scroller -->
+					</nav>
+				</li>
+			</ul>
+			<div id="contenedoOficial">
+				<div id="contsec">
+
+					<div id="seccion1" class="seccion1 columna ancho1">
+						<div class="anchotodo margenH negro" id="detalleIncu">
+							<div class="texto subti">Mi primer incubadora</div>
+							<div class="texto ">Detalle incubadora</div>
+							<div class="texto ">Detalle incubadora</div>
+							<div class="texto ">Detalle incubadora</div>
+
+							
+						</div>
+
+						<div class="anchotodo margenH negro fila" id="servo">
+							<div class="columna">
+							<h5 class="texto" style="color: #A3D900;">Inclinación</h5>
+							<h3 class="texto " id="gradoServo">45 °</h3>
+							</div>
+							<img src="assets/servo.png" style="width: 123px; height: 40px;" id="imgservo" class="anima">
+							<!-- <div class="anchotodo" style="height: 50px" id="imgservo"></div> -->
+							
+						</div>
+						<style>
+							.switch{
+								height: 30px;
+								width: 80px;
+								border: 1.5px solid #A3D900;
+								border-radius: 40px;
+								position: relative;
+							}
+							.on{
+								height: 30px;
+								width: 30px;
+								border: 1px solid #A3D900;
+								/*background: #A3D900;*/
+								border-radius: 50%;
+								position: absolute;
+								top: -2px;
+								left:50px;
+								color: black !important;
+							}
+
+							.off{
+								height: 30px;
+								width: 30px;
+								border: 1px solid #A3D900;
+								border-radius: 50%;
+								position: absolute;
+								top: -2px;
+								left: 0;
+							}
+							.margenp{
+								margin:10px;
+							}
+							.btn{
+								transition: .1s;
+							}
+							.btnActivo{
+								border: 2px solid #A3D900;
+
+							}
+							.btn:hover{
+								border: 2px solid #A3D900;
+
+							}
+							.izquierda{
+								justify-content: left !important;
+							}
+							.anima{
+								transition: .3s;
+							}
+							.calen{
+								margin: 0 15px;
+								transition: .1s;
+								height: 100%;
+								padding: 0 5px;
+							}
+							.calen:hover{
+								color: #FFCE34;
+								border: 1px solid #FFCE34;
+							}
+							#switch1, #switcher1, #switch2, #switcher2{
+								transition: .3s;
+							}
+							.btnDesactivo{
+								border:none;
+							}
+						</style>
+						<div class="anchotodo negro" id="gadgets">
+							<div class="anchotodo altomitad centrarV spaceBetween">
+								<div class="centrarV texto"><img src="assets/luz.png" width="36" height="36" class="margenp"> Luces	</div>	
+								<div id="switch1" class="switch cursor" onclick="switcher1();"><div id="switcher1" class=" off centrarV centrarH"><span class="texto2 texto3 " id="textSwitch1" >OFF</span></div></div>
+								
+							</div>
+							<div class="anchotodo altomitad centrarV spaceBetween">
+								<div class="centrarV texto"><img src="assets/extraer.png" width="36" height="36" class="margenp"> Extractores	</div>	
+								<div id="switch2" class="switch cursor" onclick="switcher2();"><div id="switcher2" class=" off centrarV centrarH"><span class="texto2 texto3 textSwitch" >OFF</span></div></div>
+								
+							</div>
+							
+						</div>
+					</div>
+
+					<style>
+							
+					</style>
+
+					<div id="seccion2" class="seccion1 columna ancho1">
+						<div class="anchotodo  margenH2 fila" id="HumTemp">
+							<div onclick="verTemperatura();" id="btn1" style="margin-right: 4px !important;" class="btn  cursor negro anchomitad altodo centrarV centrarH texto2 margen0"><img class=" margencita" src="assets/temperatura.png" width="20px" height="20px"> Temperatura</div>
+							<div onclick="verHumedad();" id="btn2" style="margin-left: 4px !important; " class="btn cursor negro anchomitad altodo centrarV centrarH texto2 margen0"><img class=" margencita" src="assets/humedad.png" width="20px" height="20px">Humedad</div>
+						</div>
+						<style>
+							#contCanvas{
+								height: calc(100% - 120px);
+								position: relative;
+							}
+							#canvas{
+								position: absolute;
+								transform : rotate(90deg);
+							}
+							#temp{
+								position: absolute;
+								font-size: 50px;
+								color: #A3D900;
+							}
+						</style>
+						<div class="anchotodo negro" id="porcentaje">
+							<div  class=" texto  centrarV centrarH" style="color: #55F3C6; font-size: 20px;"><img class=" margencita" src="assets/temperatura.png" width="30px" height="30px"> Temperatura</div>
+							<div id="contCanvas" class="centrarH centrarV">
+								<h1 id="temp"></h1>
+								<canvas  id="canvas" width="274" height="230"></canvas>
+							</div>
+							<div class="anchotodo centrarH centrarV subti">Estado</div>
+						</div>
+					</div>
+					<style>
+						#calendario{
+							-webkit-clip-path: polygon(0 0, 70% 0%, 70% 100%, 0 100%);
+							clip-path: polygon(0 0, 20% 0%, 20% 100%, 0 100%);
+							transition: .4s;
+						}
+						#calendario:hover{
+							-webkit-clip-path: polygon(0 0, 70% 0%, 70% 100%, 0 100%);
+							clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+						}
+						.anchor{
+							width: 100% !important;
+						}
+					</style>
+					<div id="seccion3" class="seccion1 columna ancho4">
+					<div class="anchotodo  margenH2 centrarV izquierda negro" id="calendario">
+
+						<div style="height: 100%; width: 100%;" class="    centrarV cursor anima">
+						<div class="spaceBetween texto2 centrarV centrarH anchor altodo" >Ahora <img class="margencita" src="assets/calendar.png" width="20" height="20"> >   <span class="calen centrarH centrarV">Ayer</span><span class="calen centrarH centrarV">Semana Pasada</span><span class="calen centrarH centrarV">Calendario completo</span></div>
+						</div>
+							
+					</div>
+
+					<div class="anchotodo negro" id="chart">
+							
+					</div>
+						
+					</div>
+					
+				</div>
+
+				<div id="contsec2">
+
+					<div id="seccion4" class=" ancho1 centrarH centrarV spaceAround fila cursor">
+						<div id="action"  onclick="actionIncu();"></div>
+						<h1 class="subti" id="textAction">INICIAR</h1>
+						
+					</div>
+
+					<style>
+						
+						.uk-countdown-number {
+						    font-size: 50px;
+						}
+						#contador{
+							color: #55F3C6;
+						}
+					</style>
+					<div id="seccion5" class=" columna ancho3 centrarH centrarV anchotodo ">
+
+							<div id="contador" class="uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date: 2017-09-28T14:03:38+00:00">
+							    <div>
+							        <div class="uk-countdown-number uk-countdown-days"></div>
+							        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Días</div>
+							    </div>
+							    <div class="uk-countdown-separator">:</div>
+							    <div>
+							        <div class="uk-countdown-number uk-countdown-hours"></div>
+							        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Horas</div>
+							    </div>
+							    <div class="uk-countdown-separator">:</div>
+							    <div>
+							        <div class="uk-countdown-number uk-countdown-minutes"></div>
+							        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutos</div>
+							    </div>
+							    <div class="uk-countdown-separator">:</div>
+							    <div>
+							        <div class="uk-countdown-number uk-countdown-seconds"></div>
+							        <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Segundos</div>
+							    </div>
+							</div>
+						
+					</div>
+					<style>
+						.cprogreso{
+								width: 100%;
+								height: 30%;	
+								display: flex;
+						    	align-items: center;
+						    	justify-content: center;
+								margin-bottom: 15px;
+						}
+							.inicio{
+								width: 30px;
+								height: 30px;
+							}
+	.contprogreso{
+	    width: 75%;
+	    height: 100%;
+	    margin: 0 10px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+
+	}
+	.porcent{
+		margin-bottom: 10px;
+		color: #A5D650;
+	}
+	.porcent, .alcanzado, .tasa, .meta{
+		font-size: 14px;
+		font-weight: bold;
+		font-family: 'Roboto', sans-serif;
+	}
+	.alcanzado{
+		color: #30ADBB;
+		margin-left: 5px;
+	}
+	.tasa{
+		color: #FFCE34;
+		margin-top: 10px;
+	}
+	.meta{
+		margin-top: 10px;
+		color: #FFCE34;
+	}
+.progreso{
+		width: 100%;
+		height: 10px;
+		background: #DDDDDD;
+		border-radius: 3px;
+}
+	.progresado{
+		position: relative;
+		border-radius: 3px;
+		width: 37.5%;
+		height: inherit;
+background: rgba(255,206,52,1);
+background: -moz-linear-gradient(left, rgba(255,206,52,1) 0%, rgba(246,132,86,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,206,52,1)), color-stop(100%, rgba(246,132,86,1)));
+background: -webkit-linear-gradient(left, rgba(255,206,52,1) 0%, rgba(246,132,86,1) 100%);
+background: -o-linear-gradient(left, rgba(255,206,52,1) 0%, rgba(246,132,86,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,206,52,1) 0%, rgba(246,132,86,1) 100%);
+background: linear-gradient(to right, rgba(255,206,52,1) 0%, rgba(246,132,86,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffce34', endColorstr='#f68456', GradientType=1 );
+	}
+	.contfinal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+	}
+
+	.final{
+		width: 33px;
+		height: 30px;
+	}
+	#huevoP{
+		width: 25px;
+		height: 25px;
+		background: black;
+		position: absolute;
+		border-radius: 50%;
+		right: 0;
+		top: -7px;
+	}
+	.huevop{
+		position: absolute;
+	}
+	.sol{
+		width: 15px;
+		height: 15px;
+	}
+					</style>
+					<div id="seccion6" class=" fila ancho2 anchotodo centrarH centrarV">
+
+						<div class="cprogreso"><img src="assets/huevo.png" class="inicio"><div class="contprogreso"><div class="porcent">35%<span class="icon-user"></span> </div> <div class="progreso"><div class="progresado"><div id="huevoP"><img src="assets/huevo1.png" class="huevop"></div></div></div><div class="tasa" title="8 Días transcurridos" uk-tooltip="pos: bottom">8<img src="assets/sol.png" class="sol"></div></div> <div class="contfinal"> <img src="assets/huevo2.png" class="final"><span class="meta centrarV centrarH">21 <img src="assets/sol.png" class="sol"></span> </div> </div>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+		</div><!-- /container -->
+
+		<script src="js/classie.js"></script>
+		<script src="js/gnmenu.js"></script>
+		<script>
+			new gnMenu( document.getElementById( 'gn-menu' ) );
+
+			  socket.on('Temperatura', function(temp){
+			  var tempe = temp;
+			  console.log("Temperatura: "+temp);
+
+			  document.getElementById('temp').innerHTML = tempe; 
+			  verTemperatura(tempe);
+			  });
+		</script>
+		<script>
+
+</script>
+	</body>
+</html>

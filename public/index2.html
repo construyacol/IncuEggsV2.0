@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title>IncuEggs</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+
+    <script>
+      // var app= angular.module('Incueggs', []);  
+      var socket= io();
+
+          // app.controller('TempeHume', ['$scope', function($scope1) {
+        //   socket.on('tempHum',function(humedad){//Esta funcion se encarga de escuchar los datos enviados por el ARDUINO.
+        //     $scope1.$apply(function(){
+        //       var lectu = humedad;
+        //       var cadena = lectu.split(",");
+        //       var hum= cadena[0];
+        //       var temp= cadena[1];
+        //       $scope1.dato1= hum;
+        //       $scope1.dato= temp;
+        //       console.log(hum);
+        //       console.log(temp);
+        //     });
+        //   });
+        // }]);
+
+
+
+  function iniciar(){
+  var accionar = $("#dato").val();
+  socket.emit('iniciarinc', accionar);
+  }
+
+
+
+
+  socket.on('Temperatura', function(temp){
+  var tempe = temp;
+  console.log("Temperatura: "+temp);
+
+  document.getElementById('temp').innerHTML = tempe; 
+  });
+
+  socket.on('Humedad', function(hum){
+  var hume = hum;
+  console.log("Humedad: "+hum);
+  document.getElementById('hum').innerHTML = hume; 
+
+  });  
+
+  socket.on('tiempo', function(time){
+  console.log("Tiempo: "+time);
+  var tiem = time;
+  
+    document.getElementById('time').innerHTML = tiem; 
+
+  });
+
+
+
+    </script>
+
+  </head>
+  <body>
+<style>
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+  .contenForm{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .centrado{
+    text-align: center;
+  }
+  .cajon{
+    border: 1px solid black; 
+    margin: 20px;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+  }
+</style>
+
+<div class="contenedor">
+    <div class="contenForm">
+    <input type="text" name="" placeholder="Ingrese dato" id="dato" value="1" style="display: none;">  
+    <input type="submit" name="" value="Iniciar incubación" onclick="iniciar();">  
+    </div>
+
+    <div class="contenedor">
+      <h2 class="centrado">Lecturas</h2>
+      <div style="display: flex; justify-content: center;">
+        <p id="temp" class="cajon" >Temperatura</p>
+        <p id="hum"  class="cajon">Temperatura</p>
+        <p id="time"  class="cajon">Temperatura</p>
+      </div>
+    </div>
+</div>
+
+  </body>
+</html>
