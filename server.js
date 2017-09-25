@@ -19,7 +19,29 @@ io.on('connection',function(socket){
    
   });
 
+
+
+  socket.on('diaX', function(x){
+
+   var dia=x;
+   
+
+   // console.log(dia+" "+hora);
+   // var enviarDia = dia.toString();
+   // console.log("Enviando día: "+dia);
+   port.write(dia);
+   port.write('4');
+   // port.write(hora);
+
+   
+  });
+
 });
+
+
+
+
+
 
 port.on('error', function(err) {
   console.log('Error al conectar con el ARDUINO: ', err.message);
@@ -35,15 +57,21 @@ parser.on('data', function(lectura){
   var cadena = lectura.split(",");
   var temp= cadena[0];
   var hum= cadena[1];
-  var time=cadena[2];
+  var bombillo=cadena[2];
+  var servo=cadena[3];
+
+  // console.log("dia: "+temp);
 
   console.log("La temperatura Actual es: "+temp);
   console.log("La humedad Actual es: "+hum);
-  console.log("El tiempo actual es: "+time);
+  console.log("El bombillo esta: "+bombillo);
+  console.log("Inclinación servo: "+servo);
 
   io.sockets.emit('Temperatura', temp);
-  // io.sockets.emit('Humedad', hum);
-  // io.sockets.emit('tiempo', time);
+  io.sockets.emit('Humedad', hum);
+  io.sockets.emit('bombillo', bombillo);
+  io.sockets.emit('servo', servo);
+
 });
 app.use(express.static("public"));
 
